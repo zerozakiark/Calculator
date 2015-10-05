@@ -6,15 +6,15 @@ public class Calculator extends JFrame implements ActionListener{
 	
   //Main method
   public static void main(String[] args) {
-     Calculator calculator = new Calculator();// create calculator
-     calculator.setTitle("Calculator"); // call it "calculator"
-     calculator.setSize(400, 400); // size 400 * 400
-     calculator.setLocationRelativeTo(null); // Center the frame 
+     Calculator calculator = new Calculator();
+     calculator.setTitle("Calculator"); 
+     calculator.setSize(400, 400); 
+     calculator.setLocationRelativeTo(null); 
      calculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
      calculator.setVisible(true);
   }
 	
-  //
+  //data
   JTextField number_field = new JTextField("0");
   String number_string = "";
   double number;
@@ -23,14 +23,14 @@ public class Calculator extends JFrame implements ActionListener{
   char operator;
   boolean point;
   
-  //
+  // panel of calculator
   public Calculator(){
      JPanel panel = new JPanel();
      Container container = getContentPane();
      container.setLayout(new BorderLayout());
      panel.setLayout(new GridLayout(4,4));
      number_field.setHorizontalAlignment(JTextField.RIGHT);
-     for(int i=0;i<16;i++){
+     for(int i = 0; i < 16; i++){
         button[i]=new JButton(jbutton[i]+"");
         panel.add(button[i]);
         button[i].addActionListener(this);
@@ -39,26 +39,26 @@ public class Calculator extends JFrame implements ActionListener{
      container.add("Center",panel);
   }
 	
-  //	
+  //action	
   public void actionPerformed(ActionEvent event){   
-     if(((JButton)event.getSource()).getText().charAt(0)=='.'){
+     if(((JButton)event.getSource()).getText().charAt(0) == '.'){
         if(!point){
            if(number_string.equals(""))
-              number_string="0";
-              number_string+=".";
+              number_string = "0";
+              number_string += ".";
               number_field.setText(number_string);
-              point=true; 
+              point = true; 
         }
-     }else if(((JButton)event.getSource()).getText().charAt(0)<='9' && ((JButton)event.getSource()).getText().charAt(0)>='0'){
-        number_string+=((JButton)event.getSource()).getText().charAt(0)+"";
+     }else if(((JButton)event.getSource()).getText().charAt(0) <= '9' && ((JButton)event.getSource()).getText().charAt(0) >= '0'){
+        number_string += ((JButton)event.getSource()).getText().charAt(0)+"";
         number_field.setText(number_string);    
      }else{
-        point=false;
-        number_string="";
+        point = false;
+        number_string = "";
         number_field.setText(operation(number,Double.parseDouble(number_field.getText()),operator)+"");
         operator = ((JButton)event.getSource()).getActionCommand().charAt(0);
         if(((JButton)event.getSource()).getText().charAt(0)!='=')                  
-            number=Double.parseDouble(number_field.getText());               
+            number = Double.parseDouble(number_field.getText());               
      }         
  }
  

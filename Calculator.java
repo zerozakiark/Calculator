@@ -4,15 +4,16 @@ import javax.swing.*;
 
 public class Calculator extends JFrame implements ActionListener{
 	
-	/** Main method */
+	//Main method
 	public static void main(String[] args) {
-	   Calculator calculator = new Calculator();
-	   calculator.setTitle("Calculator");
-	   calculator.setSize(400, 400);
-	   calculator.setLocationRelativeTo(null); // Center the frame
+	   Calculator calculator = new Calculator();// create calculator
+	   calculator.setTitle("Calculator"); // call it "calculator"
+	   calculator.setSize(400, 400); // size 400 * 400
+	   calculator.setLocationRelativeTo(null); // Center the frame 
 	   calculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	   calculator.setVisible(true);
 	}
+	
 	
 	JTextField number_field = new JTextField("0");
 	String number_string = "";
@@ -60,18 +61,19 @@ public class Calculator extends JFrame implements ActionListener{
             number=Double.parseDouble(number_field.getText());               
      }         
  }
-   
+ 
+    // method of choosing " + " , " - " , " * " and " / " , and return their answer
     public double operation(double number1,double number2,char operator){      
         switch(operator)
         {        
             case '+':
-                return number1+number2;
+                return (number1 + number2);
             case '-':
-                return number1-number2;
+                return (number1 - number2);
             case '*':
-                return number1*number2;
+                return (number1 * number2);
             case '/':
-                return number1/number2;
+                return (number1 / number2);
             default:
                 return number2; 
         }
